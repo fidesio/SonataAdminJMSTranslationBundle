@@ -3,20 +3,20 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset("bundles/jmstranslation/css/layout.css") }}"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset("bundles/kasonataadminjmstranslation/css/kasonataadminjmstranslation.css") }}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset("bundles/fidesiosonataadminjmstranslation/css/sonataadminjmstranslation.css") }}"/>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset("bundles/kasonataadminjmstranslation/js/kasonataadminjmstranslation.js") }}"></script>
+    <script src="{{ asset("bundles/fidesiosonataadminjmstranslation/js/sonataadminjmstranslation.js") }}"></script>
     <script language="javascript" type="text/javascript">
         $(function () {
-            addKaSonataAdminEventListeners(
+            addFidesioSonataAdminEventListeners(
                     {{ path("jms_translation_update_message", {"config": selectedConfig, "domain": selectedDomain, "locale": selectedLocale})|json_encode|raw }},
                     {{ isWriteable is sameas(true) ? 1 : 0 }},
-                    {{ (is_granted('ROLE_SUPER_ADMIN') and ka_is_git_available()) ? 1 : 0 }},
-                    {{ (is_granted('ROLE_SUPER_ADMIN') and ka_is_git_available() and ka_is_git_initialized(currentDir)) ? 1 : 0 }},
-                    {{ path('ka_sonataadminjmstranslation_translate_git_info', {"config": selectedConfig })|json_encode|raw }}
+                    {{ (is_granted('ROLE_SUPER_ADMIN') and fidesio_is_git_available()) ? 1 : 0 }},
+                    {{ (is_granted('ROLE_SUPER_ADMIN') and fidesio_is_git_available() and fidesio_is_git_initialized(currentDir)) ? 1 : 0 }},
+                    {{ path('fidesio_sonataadminjmstranslation_translate_git_info', {"config": selectedConfig })|json_encode|raw }}
             );
         });
     </script>
@@ -58,7 +58,7 @@
                         </select>
                     </div>
                 </form>
-                {% include "KASonataAdminJMSTranslationBundle:Translate:archive.html.twig" %}
+                {% include "FidesioSonataAdminJMSTranslationBundle:Translate:archive.html.twig" %}
             </div>
         </div>
         {% if isWriteable is sameas(true) %}
@@ -119,7 +119,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">{{ 'New Messages'|trans }}</div>
                         <div class="panel-body">
-                            {% include "KASonataAdminJMSTranslationBundle:Translate:messages.html.twig" with {"messages": newMessages, "tabIndex": 1} %}
+                            {% include "FidesioSonataAdminJMSTranslationBundle:Translate:messages.html.twig" with {"messages": newMessages, "tabIndex": 1} %}
                         </div>
                     </div>
                 {% endif %}
@@ -127,7 +127,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">{{ 'Existing Messages'|trans }}</div>
                         <div class="panel-body">
-                            {% include "KASonataAdminJMSTranslationBundle:Translate:messages.html.twig" with {"messages": existingMessages, "tabIndex": newMessages|length + 1} %}
+                            {% include "FidesioSonataAdminJMSTranslationBundle:Translate:messages.html.twig" with {"messages": existingMessages, "tabIndex": newMessages|length + 1} %}
                         </div>
                     </div>
                 {% endif %}
@@ -160,7 +160,7 @@
             </div>
 
             <div class="git" data-git>
-                {% include "KASonataAdminJMSTranslationBundle:Translate:git.html.twig" %}
+                {% include "FidesioSonataAdminJMSTranslationBundle:Translate:git.html.twig" %}
             </div>
         </div>
     </div>

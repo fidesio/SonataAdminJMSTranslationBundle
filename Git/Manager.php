@@ -14,7 +14,7 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
 /**
- * Class KA\SonataAdminJMSTranslationBundle\Git\Manager
+ * Class Fidesio\SonataAdminJMSTranslationBundle\Git\Manager
  */
 class Manager
 {

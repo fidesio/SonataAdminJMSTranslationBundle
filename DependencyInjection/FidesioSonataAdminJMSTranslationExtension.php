@@ -8,9 +8,9 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
- * Class KA\SonataAdminJMSTranslationBundle\DependencyInjection\SeoSASonataAdminJMSTranslationExtension
+ * Class Fidesio\SonataAdminJMSTranslationBundle\DependencyInjection\SeoSASonataAdminJMSTranslationExtension
  */
-class KASonataAdminJMSTranslationExtension extends Extension
+class FidesioSonataAdminJMSTranslationExtension extends Extension
 {
     /**
      * {@inheritDoc}

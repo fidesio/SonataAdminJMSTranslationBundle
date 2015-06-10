@@ -18,7 +18,7 @@ use JMS\TranslationBundle\Model\Message;
 use Psr\Log\LoggerInterface;
 
 /**
- * Class KA\SonataAdminJMSTranslationBundle\Translation\Updater
+ * Class Fidesio\SonataAdminJMSTranslationBundle\Translation\Updater
  */
 class Updater extends JMSUpdater
 {

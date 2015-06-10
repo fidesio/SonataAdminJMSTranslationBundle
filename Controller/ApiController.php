@@ -17,7 +17,7 @@ use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration as ControllerConfiguration;
 
 /**
- * Class KA\SonataAdminJMSTranslationBundle\Controller\ApiController
+ * Class Fidesio\SonataAdminJMSTranslationBundle\Controller\ApiController
  */
 class ApiController
 {
@@ -35,9 +35,9 @@ class ApiController
     protected $configFactory;
 
     /**
-     * @var \KA\SonataAdminJMSTranslationBundle\Translation\Updater
+     * @var \Fidesio\SonataAdminJMSTranslationBundle\Translation\Updater
      *
-     * @DI\Inject("ka_sonata_admin_jms_translation.updater")
+     * @DI\Inject("fidesio_sonata_admin_jms_translation.updater")
      */
     protected $updater;
 

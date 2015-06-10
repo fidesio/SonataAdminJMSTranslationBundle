@@ -1,7 +1,7 @@
 /**
  * Created by andrew on 11.04.14.
  */
-function addKaSonataAdminEventListeners(updateMessagePath, writable, gitEnabled, gitInited, gitApi) {
+function addFidesioSonataAdminEventListeners(updateMessagePath, writable, gitEnabled, gitInited, gitApi) {
 
     var defaultLocation = document.location;
 

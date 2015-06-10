@@ -5,9 +5,9 @@ namespace Fidesio\SonataAdminJMSTranslationBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class KA\SonataAdminJMSTranslationBundle\SeoSASonataAdminJMSTranslationBundle
+ * Class Fidesio\SonataAdminJMSTranslationBundle\SeoSASonataAdminJMSTranslationBundle
  */
-class KASonataAdminJMSTranslationBundle extends Bundle
+class FidesioSonataAdminJMSTranslationBundle extends Bundle
 {
     /**
      * {@inheritdoc}

@@ -9,10 +9,10 @@
  */
 namespace Fidesio\SonataAdminJMSTranslationBundle\Twig;
 
-use KA\SonataAdminJMSTranslationBundle\Git\Manager;
+use Fidesio\SonataAdminJMSTranslationBundle\Git\Manager;
 
 /**
- * Class KA\SonataAdminJMSTranslationBundle\Twig\GitExtension
+ * Class Fidesio\SonataAdminJMSTranslationBundle\Twig\GitExtension
  */
 class GitExtension extends \Twig_Extension
 {
@@ -34,7 +34,7 @@ class GitExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'ka_sonata_admin_jms_translation_git';
+        return 'fidesio_sonata_admin_jms_translation_git';
     }
 
     /**
@@ -43,11 +43,11 @@ class GitExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('ka_is_git_available', [$this->manger, 'isEnabled']),
-            new \Twig_SimpleFunction('ka_is_git_version', [$this->manger, 'version']),
-            new \Twig_SimpleFunction('ka_is_git_initialized', [$this->manger, 'gitInitialized']),
+            new \Twig_SimpleFunction('fidesio_is_git_available', [$this->manger, 'isEnabled']),
+            new \Twig_SimpleFunction('fidesio_is_git_version', [$this->manger, 'version']),
+            new \Twig_SimpleFunction('fidesio_is_git_initialized', [$this->manger, 'gitInitialized']),
             new \Twig_SimpleFunction(
-                'ka_git_status',
+                'fidesio_git_status',
                 function ($directory, array $options = [], $returnAsArray = true) {
                     $result = $this->manger->status($directory, $options, $returnAsArray);
 
@@ -58,7 +58,7 @@ class GitExtension extends \Twig_Extension
                 ]
             ),
             new \Twig_SimpleFunction(
-                'ka_git_branch',
+                'fidesio_git_branch',
                 function ($directory, $branch = '', array $options = [], $returnAsArray = true) {
                     $result = $this->manger->branch($directory, $branch, $options, $returnAsArray);
 
@@ -69,7 +69,7 @@ class GitExtension extends \Twig_Extension
                 ]
             ),
             new \Twig_SimpleFunction(
-                'ka_git_branch_list',
+                'fidesio_git_branch_list',
                 function ($directory, $returnAsArray = true) {
                     $result = $this->manger->branchList($directory, $returnAsArray);
 
@@ -79,9 +79,9 @@ class GitExtension extends \Twig_Extension
                     'is_safe' => ['html']
                 ]
             ),
-            new \Twig_SimpleFunction('ka_is_git_current_branch', [$this->manger, 'branchCurrent']),
-            new \Twig_SimpleFunction('ka_is_git_history', [$this->manger, 'history']),
-            new \Twig_SimpleFunction('ka_is_git_diff', [$this->manger, 'diff']),
+            new \Twig_SimpleFunction('fidesio_is_git_current_branch', [$this->manger, 'branchCurrent']),
+            new \Twig_SimpleFunction('fidesio_is_git_history', [$this->manger, 'history']),
+            new \Twig_SimpleFunction('fidesio_is_git_diff', [$this->manger, 'diff']),
 
         ];
     }

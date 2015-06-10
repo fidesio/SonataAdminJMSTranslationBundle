@@ -6,7 +6,7 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * Class KA\SonataAdminJMSTranslationBundle\DependencyInjection\Configuration
+ * Class Fidesio\SonataAdminJMSTranslationBundle\DependencyInjection\Configuration
  */
 class Configuration implements ConfigurationInterface
 {
@@ -16,7 +16,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode    = $treeBuilder->root('ka_sonata_admin_jms_translation');
+        $rootNode    = $treeBuilder->root('fidesio_sonata_admin_jms_translation');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

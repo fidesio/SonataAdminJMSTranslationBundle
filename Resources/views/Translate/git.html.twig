@@ -6,13 +6,13 @@
  # Author: Kluev Andrew
  # Contact: Kluev.Andrew@gmail.com
  #}
-{% if is_granted('ROLE_SUPER_ADMIN') and ka_is_git_available() %}
+{% if is_granted('ROLE_SUPER_ADMIN') and fidesio_is_git_available() %}
     <div class="panel panel-default">
-        <div class="panel-heading">GIT: {{ ka_is_git_version() }}</div>
+        <div class="panel-heading">GIT: {{ fidesio_is_git_version() }}</div>
         <div class="panel-body">
-            {% if ka_is_git_initialized(currentDir) %}
-                {% set modified_files = ka_git_status(currentDir, {0: '-s'}, true) %}
-                {% set currentBranch = ka_is_git_current_branch(currentDir) %}
+            {% if fidesio_is_git_initialized(currentDir) %}
+                {% set modified_files = fidesio_git_status(currentDir, {0: '-s'}, true) %}
+                {% set currentBranch = fidesio_is_git_current_branch(currentDir) %}
 
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ 'Modified files'|trans }} ({{ currentBranch }})</div>
@@ -44,7 +44,7 @@
                     {% endif %}
                 </div>
 
-                {% set branches = ka_git_branch_list(currentDir) %}
+                {% set branches = fidesio_git_branch_list(currentDir) %}
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ 'Branches'|trans }}</div>
                     <table class="table">
@@ -65,7 +65,7 @@
                                         {% else %}
                                             <a href="{{ path('jms_translation_git_exec', {'config': selectedConfig, 'command': 'checkout', 'branch': branch}) }}" class="btn btn-xs btn-success">{{ 'Checkout'|trans }}</a>
                                         {% endif %}
-                                        {% if ka_is_git_diff(currentDir, currentBranch, branch) %}
+                                        {% if fidesio_is_git_diff(currentDir, currentBranch, branch) %}
                                             <a href="{{ path('jms_translation_git_exec', {'config': selectedConfig, 'command': 'merge', 'revision1': currentBranch, 'revision2': branch }) }}" class="btn btn-xs btn-warning">{{ 'Merge'|trans }}</a>
                                         {% endif %}
                                         <a href="{{ path('jms_translation_git_exec', {'config': selectedConfig, 'command': 'branch', 'branch': branch, 'options': {0: '-D'} }) }}" class="btn btn-xs btn-danger">{{ 'Remove'|trans }}</a>
@@ -92,7 +92,7 @@
                     </table>
                 </div>
 
-                {% set history = ka_is_git_history(currentDir) %}
+                {% set history = fidesio_is_git_history(currentDir) %}
                 <div class="panel panel-danger">
                     <div class="panel-heading">{{ 'Rollback'|trans }} ({{ currentBranch }})</div>
                     <form class="form form-inline panel-body"

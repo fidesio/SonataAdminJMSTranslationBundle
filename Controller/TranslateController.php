@@ -26,7 +26,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
 /**
- * Class KA\SonataAdminJMSTranslationBundle\Controller\TranslateController
+ * Class Fidesio\SonataAdminJMSTranslationBundle\Controller\TranslateController
  */
 class TranslateController
 {
@@ -157,7 +157,7 @@ class TranslateController
         }
 
         return $this->render(
-            'KASonataAdminJMSTranslationBundle:Translate:index.html.twig',
+            'FidesioSonataAdminJMSTranslationBundle:Translate:index.html.twig',
             array(
                 'currentDir'           => $translationsDir,
                 'selectedConfig'       => $config,
@@ -230,7 +230,7 @@ class TranslateController
     /**
      * @param string $config
      *
-     * @ControllerConfiguration\Route("/configs/{config}/git/", name="ka_sonataadminjmstranslation_translate_git_info")
+     * @ControllerConfiguration\Route("/configs/{config}/git/", name="fidesio_sonataadminjmstranslation_translate_git_info")
      * @ControllerConfiguration\Template
      *
      * @return array
@@ -327,7 +327,7 @@ class TranslateController
 
         return new RedirectResponse(
             $this->getRouter()->generate(
-                'ka_sonataadminjmstranslation_translate_git_info',
+                'fidesio_sonataadminjmstranslation_translate_git_info',
                 [
                     'config' => $config
                 ]
@@ -439,11 +439,11 @@ class TranslateController
     }
 
     /**
-     * @return \KA\SonataAdminJMSTranslationBundle\Git\Manager
+     * @return \Fidesio\SonataAdminJMSTranslationBundle\Git\Manager
      */
     protected function getGitManager()
     {
-        return $this->container->get('ka_sonata_admin_jms_translation.git.manager');
+        return $this->container->get('fidesio_sonata_admin_jms_translation.git.manager');
     }
 
     /**

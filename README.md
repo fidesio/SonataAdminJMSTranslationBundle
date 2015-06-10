@@ -56,7 +56,7 @@ public function registerBundles()
         new JMS\DiExtraBundle\JMSDiExtraBundle($this),
         new JMS\AopBundle\JMSAopBundle(),
         new JMS\TranslationBundle\JMSTranslationBundle(),
-        new KA\SonataAdminJMSTranslationBundle\KASonataAdminJMSTranslationBundle(),
+        new Fidesio\SonataAdminJMSTranslationBundle\KASonataAdminJMSTranslationBundle(),
         // ...
     );
 }
