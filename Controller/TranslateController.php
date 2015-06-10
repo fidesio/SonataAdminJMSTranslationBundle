@@ -17,6 +17,7 @@ use JMS\TranslationBundle\Translation\Config;
 use JMS\TranslationBundle\Util\FileUtils;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration as ControllerConfiguration;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +29,7 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 /**
  * Class Fidesio\SonataAdminJMSTranslationBundle\Controller\TranslateController
  */
-class TranslateController
+class TranslateController extends Controller
 {
     /**
      * @var \JMS\TranslationBundle\Translation\ConfigFactory
