@@ -156,27 +156,30 @@ class TranslateController
             $existingMessages[$id] = $message;
         }
 
-        return [
-            'currentDir'           => $translationsDir,
-            'selectedConfig'       => $config,
-            'selectedDomain'       => $domain,
-            'selectedLocale'       => $locale,
-            'configs'              => $configs,
-            'domains'              => $domains,
-            'locales'              => $locales,
-            'format'               => $files[$domain][$locale][0],
-            'newMessages'          => $newMessages,
-            'existingMessages'     => $existingMessages,
-            'alternativeMessages'  => $alternativeMessages,
-            'isWriteable'          => is_writeable($files[$domain][$locale][1]),
-            'file'                 => (string) $files[$domain][$locale][1],
-            'sourceLanguage'       => $this->sourceLanguage,
-            'base_template'        => $this->getBaseTemplate($request),
-            'admin_pool'           => $this->container->get('sonata.admin.pool'),
-            'blocks'               => $this->container->getParameter('sonata.admin.configuration.dashboard_blocks'),
-            'supportedArchFormats' => $supportedArchFormats,
-            'downloadError'        => $downloadError
-        ];
+        return $this->render(
+            'KASonataAdminJMSTranslationBundle:Translate:index.html.twig',
+            array(
+                'currentDir'           => $translationsDir,
+                'selectedConfig'       => $config,
+                'selectedDomain'       => $domain,
+                'selectedLocale'       => $locale,
+                'configs'              => $configs,
+                'domains'              => $domains,
+                'locales'              => $locales,
+                'format'               => $files[$domain][$locale][0],
+                'newMessages'          => $newMessages,
+                'existingMessages'     => $existingMessages,
+                'alternativeMessages'  => $alternativeMessages,
+                'isWriteable'          => is_writeable($files[$domain][$locale][1]),
+                'file'                 => (string) $files[$domain][$locale][1],
+                'sourceLanguage'       => $this->sourceLanguage,
+                'base_template'        => $this->getBaseTemplate($request),
+                'admin_pool'           => $this->container->get('sonata.admin.pool'),
+                'blocks'               => $this->container->getParameter('sonata.admin.configuration.dashboard_blocks'),
+                'supportedArchFormats' => $supportedArchFormats,
+                'downloadError'        => $downloadError
+            )
+        );
     }
 
     /**

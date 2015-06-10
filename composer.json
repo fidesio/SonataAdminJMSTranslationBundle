@@ -1,5 +1,5 @@
 {
-    "name": "kluev-andrew/sonata-admin-jms-translations",
+    "name": "fidesio/sonata-admin-jms-translations",
     "description": "Add JMSTranslationBundle to SonataAdminBundle",
     "keywords": ["translation", "jms", "sonata-admin", "multilanguage", "extract", "webinterface", "ui", "i18n", "extraction", "interface"],
     "type": "symfony-bundle",
@@ -15,11 +15,11 @@
         "symfony/framework-bundle": "~2.1",
         "nikic/php-parser": "0.9.4",
         "symfony/console": "*",
-        "jms/translation-bundle": "dev-master",
-        "jms/di-extra-bundle": "dev-master",
-        "sonata-project/admin-bundle": "2.3.*@dev",
+        "jms/translation-bundle": "~1.1",
+        "jms/di-extra-bundle": "~1.4",
+        "sonata-project/admin-bundle": "~2.3",
         "sensio/framework-extra-bundle": "~3.0",
-        "alchemy/zippy": "dev-master"
+        "alchemy/zippy": "~0.2'"
     },
     "conflict": {
         "twig/twig": "1.10.2"
