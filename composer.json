@@ -29,5 +29,5 @@
             "Fidesio\\SonataAdminJMSTranslationBundle": ""
         }
     },
-    "target-dir": "fidesio/SonataAdminJMSTranslationBundle"
+    "target-dir": "Fidesio/SonataAdminJMSTranslationBundle"
 }
