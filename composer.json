@@ -10,7 +10,7 @@
             "email": "kluev.andrew@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "symfony/framework-bundle": "~2.1",
         "nikic/php-parser": "0.9.4",
