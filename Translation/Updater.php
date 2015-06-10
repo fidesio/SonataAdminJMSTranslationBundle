@@ -7,7 +7,7 @@
  * Author: Kluev Andrew
  * Contact: Kluev.Andrew@gmail.com
  */
-namespace KA\SonataAdminJMSTranslationBundle\Translation;
+namespace Fidesio\SonataAdminJMSTranslationBundle\Translation;
 
 use JMS\TranslationBundle\Translation\Config;
 use JMS\TranslationBundle\Translation\ExtractorManager;

@@ -7,7 +7,7 @@
  * Author: Kluev Andrew
  * Contact: Kluev.Andrew@gmail.com
  */
-namespace KA\SonataAdminJMSTranslationBundle\Git;
+namespace Fidesio\SonataAdminJMSTranslationBundle\Git;
 
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;

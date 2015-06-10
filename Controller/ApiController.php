@@ -7,7 +7,7 @@
  * Author: Kluev Andrew
  * Contact: Kluev.Andrew@gmail.com
  */
-namespace KA\SonataAdminJMSTranslationBundle\Controller;
+namespace Fidesio\SonataAdminJMSTranslationBundle\Controller;
 
 use JMS\TranslationBundle\Exception\RuntimeException;
 use Symfony\Component\HttpFoundation\Response;

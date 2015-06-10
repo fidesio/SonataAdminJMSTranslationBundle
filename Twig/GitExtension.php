@@ -7,7 +7,7 @@
  * Author: Kluev Andrew
  * Contact: Kluev.Andrew@gmail.com
  */
-namespace KA\SonataAdminJMSTranslationBundle\Twig;
+namespace Fidesio\SonataAdminJMSTranslationBundle\Twig;
 
 use KA\SonataAdminJMSTranslationBundle\Git\Manager;
 

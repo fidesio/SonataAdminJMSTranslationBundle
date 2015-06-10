@@ -1,6 +1,6 @@
 <?php
 
-namespace KA\SonataAdminJMSTranslationBundle\DependencyInjection;
+namespace Fidesio\SonataAdminJMSTranslationBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

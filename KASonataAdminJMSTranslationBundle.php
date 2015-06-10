@@ -1,6 +1,6 @@
 <?php
 
-namespace KA\SonataAdminJMSTranslationBundle;
+namespace Fidesio\SonataAdminJMSTranslationBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
