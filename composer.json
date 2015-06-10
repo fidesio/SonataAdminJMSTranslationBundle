@@ -10,7 +10,7 @@
             "email": "kluev.andrew@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "symfony/framework-bundle": "~2.1",
         "nikic/php-parser": "0.9.4",
@@ -26,13 +26,8 @@
     },
     "autoload": {
         "psr-0": {
-            "KA\\SonataAdminJMSTranslationBundle": ""
+            "Fidesio\\SonataAdminJMSTranslationBundle": ""
         }
     },
-    "target-dir": "KA/SonataAdminJMSTranslationBundle",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.2-dev"
-        }
-    }
+    "target-dir": "fidesio/SonataAdminJMSTranslationBundle"
 }
