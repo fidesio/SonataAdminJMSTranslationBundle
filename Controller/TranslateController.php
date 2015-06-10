@@ -204,13 +204,6 @@ class TranslateController extends Controller
             throw new RuntimeException('Bad file.');
         }
 
-        $manager = $this->getGitManager();
-        if ($manager->isEnabled() && $manager->gitInitialized($translationsDir) && $request->get('create_new_branch')) {
-            $branchName = sprintf('upload_file_%s', date('Y_m_d_h_i'));
-            $manager->branch($translationsDir, $branchName);
-            $manager->checkout($translationsDir, $branchName);
-        }
-
         $archivePath = $archive->getRealPath() . '.' . $archive->getClientOriginalName();
         move_uploaded_file($archive->getRealPath(), $archivePath);
 
@@ -226,114 +219,6 @@ class TranslateController extends Controller
         }
 
         return new RedirectResponse($request->headers->get('referer'));
-    }
-
-    /**
-     * @param string $config
-     *
-     * @ControllerConfiguration\Route("/configs/{config}/git/", name="fidesio_sonataadminjmstranslation_translate_git_info")
-     * @ControllerConfiguration\Template
-     *
-     * @return array
-     * @throws \JMS\TranslationBundle\Exception\RuntimeException
-     */
-    public function gitAction($config)
-    {
-        if (!$config) {
-            throw new RuntimeException('You need to configure at least one config under "jms_translation.configs".');
-        }
-
-        /** @var Config $configuration */
-        $configuration = $this->configFactory->getConfig($config, 'any');
-
-        return [
-            'selectedConfig' => $config,
-            'currentDir'     => $configuration->getTranslationsDir(),
-        ];
-    }
-
-    /**
-     * @param Request $request
-     * @param string  $config
-     * @param string  $command
-     *
-     * @ControllerConfiguration\Route("/configs/{config}/git/{command}/", name="jms_translation_git_exec", options = {"i18n" = false})
-     *
-     * @return RedirectResponse
-     * @throws \RuntimeException
-     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
-     * @throws \InvalidArgumentException
-     */
-    public function gitExecAction(Request $request, $config, $command)
-    {
-        if (false == $this->getSecurityContext()->isGranted('ROLE_SUPER_ADMIN')) {
-            throw new AccessDeniedException();
-        }
-
-        $manager = $this->getGitManager();
-        if (!$manager->isEnabled()) {
-            throw new \RuntimeException('Git is not available.');
-        }
-
-        /** @var \JMS\TranslationBundle\Translation\ConfigBuilder $builder */
-        $builder = $this->configFactory->getBuilder($config);
-        /** @var \JMS\TranslationBundle\Translation\Config $config */
-        $configuration = $builder->setLocale('any')->getConfig();
-        $directory     = $configuration->getTranslationsDir();
-
-        try {
-            switch ($command) {
-                case 'init':
-                    $manager->init($directory);
-                    break;
-                case 'commit':
-                    $message = trim($request->get('commit_message', ''));
-                    $manager->commit($directory, $message);
-                    break;
-                case 'reset':
-                    $to      = trim($request->get('to', ''));
-                    $options = $request->get('options', []);
-                    $manager->reset($directory, $to, $options);
-                    break;
-                case 'checkout':
-                    $branch  = trim($request->get('branch', ''));
-                    $options = $request->get('options', []);
-                    $manager->checkout($directory, $branch, $options);
-                    break;
-                case 'branch':
-                    $branch  = trim($request->get('branch', ''));
-                    $options = $request->get('options', []);
-                    $manager->branch($directory, $branch, $options);
-                    break;
-                case 'merge':
-                    $revision1 = trim($request->get('revision1', ''));
-                    $revision2 = trim($request->get('revision2', ''));
-                    $manager->merge($directory, $revision1, $revision2);
-                    break;
-                default:
-                    throw new \InvalidArgumentException('Unknown command');
-            }
-        } catch (\InvalidArgumentException $e) {
-            $msg = /** @Ignore */
-                $this->getTranslator()->trans($e->getMessage());
-
-            return new Response($msg, 400);
-        } catch (ProcessFailedException $e) {
-            $msg = /** @Ignore */
-                $this->getTranslator()->trans($e->getMessage());
-
-            return new Response($msg, 500);
-        }
-
-
-        return new RedirectResponse(
-            $this->getRouter()->generate(
-                'fidesio_sonataadminjmstranslation_translate_git_info',
-                [
-                    'config' => $config
-                ]
-            )
-        );
     }
 
     /**
@@ -437,14 +322,6 @@ class TranslateController extends Controller
     protected function getSecurityContext()
     {
         return $this->container->get('security.context');
-    }
-
-    /**
-     * @return \Fidesio\SonataAdminJMSTranslationBundle\Git\Manager
-     */
-    protected function getGitManager()
-    {
-        return $this->container->get('fidesio_sonata_admin_jms_translation.git.manager');
     }
 
     /**

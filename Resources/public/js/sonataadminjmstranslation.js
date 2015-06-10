@@ -1,11 +1,10 @@
 /**
  * Created by andrew on 11.04.14.
  */
-function addFidesioSonataAdminEventListeners(updateMessagePath, writable, gitEnabled, gitInited, gitApi) {
+function addFidesioSonataAdminEventListeners(updateMessagePath, writable) {
 
     var defaultLocation = document.location;
 
-    var gitAjax = null;
     $('#config').on('change', 'select', function () {
         $(this).closest('form').submit();
     });
@@ -98,18 +97,6 @@ function addFidesioSonataAdminEventListeners(updateMessagePath, writable, gitEna
                     }
                 });
 
-                if (gitEnabled && gitInited) {
-                    if (gitAjax) {
-                        gitAjax.abort();
-                    }
-                    gitAjax = $.ajax({
-                        url: gitApi,
-                        method: 'GET',
-                        success: function (html) {
-                            $('[data-git]').html(html);
-                        }
-                    });
-                }
             })
             .focus(function (e) {
                 e.preventDefault();
@@ -166,47 +153,7 @@ function addFidesioSonataAdminEventListeners(updateMessagePath, writable, gitEna
         target.slideToggle();
     });
 
-    if (gitEnabled) {
-        $('[data-git]').on('click', 'a', function (event) {
-            event.preventDefault();
-            var btn = $(this);
-            btn.parent().find('[data-error]').remove();
-            $.ajax({
-                url: btn.attr('href'),
-                method: 'GET',
-                success: function (html) {
-                    if (btn.data('referesh')) {
-                        document.location.reload();
-                    } else {
-                        $('[data-git]').html(html);
-                    }
-                },
-                error: function (data) {
-                    var err = $('<div data-error class="alert alert-danger">'+data.responseText+'</div>');
-                    err.insertAfter(btn);
-                }
-            });
-        });
-        $('[data-git]').on('submit', 'form', function (event) {
-            event.preventDefault();
-            var form = $(this);
-            form.find('[data-error]').remove();
-            $.ajax({
-                url: form.attr('action'),
-                method: form.attr('method'),
-                data: form.serialize(),
-                success: function () {
-                    document.location.reload();
-                },
-                error: function (data) {
-                    form.prepend('<div data-error class="alert alert-danger">'+data.responseText+'</div>');
-                }
-            });
-        });
-    }
-
     $('[data-download]').on('click', function () {
-
         document.location = defaultLocation;
     });
 }

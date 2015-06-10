@@ -10,7 +10,7 @@
 <div class="panel-footer">
     <div class="row">
         <div class="col-md-6">
-            <p>{{ 'Download'|trans }} {{ selectedConfig }} {{ selectedLocale }} {% if fidesio_is_git_available() and fidesio_is_git_initialized(currentDir) %}({{ fidesio_is_git_current_branch(currentDir) }}){% endif %}</p>
+            <p>{{ 'Download'|trans }} {{ selectedConfig }} {{ selectedLocale }}</p>
 
             <div class="btn-group">
                 {% for format in supportedArchFormats %}
@@ -32,14 +32,6 @@
                     <label for="archive">{{ 'Archive'|trans }}</label>
                     <input required="required" class="form-control" type="file" name="archive"/>
                 </div>
-                {% if fidesio_is_git_available() and fidesio_is_git_initialized(currentDir) and not fidesio_git_status(currentDir, {0: '-s'}, true)|length %}
-                    <div class="form-group">
-                        <label for="">
-                            <input type="checkbox" name="create_new_branch"/>
-                            {{ 'Into new branch'|trans }}
-                        </label>
-                    </div>
-                {% endif %}
                 <input type="submit" value="{{ 'Upload'|trans }}"/>
             </form>
         </div>

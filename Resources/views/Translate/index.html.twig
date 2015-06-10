@@ -13,10 +13,7 @@
         $(function () {
             addFidesioSonataAdminEventListeners(
                     {{ path("jms_translation_update_message", {"config": selectedConfig, "domain": selectedDomain, "locale": selectedLocale})|json_encode|raw }},
-                    {{ isWriteable is sameas(true) ? 1 : 0 }},
-                    {{ (is_granted('ROLE_SUPER_ADMIN') and fidesio_is_git_available()) ? 1 : 0 }},
-                    {{ (is_granted('ROLE_SUPER_ADMIN') and fidesio_is_git_available() and fidesio_is_git_initialized(currentDir)) ? 1 : 0 }},
-                    {{ path('fidesio_sonataadminjmstranslation_translate_git_info', {"config": selectedConfig })|json_encode|raw }}
+                    {{ isWriteable is sameas(true) ? 1 : 0 }}
             );
         });
     </script>
@@ -157,10 +154,6 @@
                         </div>
                     {% endif %}
                 </form>
-            </div>
-
-            <div class="git" data-git>
-                {% include "FidesioSonataAdminJMSTranslationBundle:Translate:git.html.twig" %}
             </div>
         </div>
     </div>

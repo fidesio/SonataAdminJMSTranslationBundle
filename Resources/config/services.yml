@@ -1,7 +1,5 @@
 parameters:
     fidesio_sonata_admin_jms_translation.updater.class: Fidesio\SonataAdminJMSTranslationBundle\Translation\Updater
-    fidesio_sonata_admin_jms_translation.twig.git.class: Fidesio\SonataAdminJMSTranslationBundle\Twig\GitExtension
-    fidesio_sonata_admin_jms_translation.git.manager.class: Fidesio\SonataAdminJMSTranslationBundle\Git\Manager
 
 services:
      fidesio_sonata_admin_jms_translation.updater:
@@ -11,15 +9,3 @@ services:
             - @jms_translation.extractor_manager
             - @logger
             - @jms_translation.file_writer
-
-     fidesio_sonata_admin_jms_translation.twig.git:
-        class: %fidesio_sonata_admin_jms_translation.twig.git.class%
-        arguments:
-            - @fidesio_sonata_admin_jms_translation.git.manager
-        tags:
-            - { name: twig.extension }
-
-     fidesio_sonata_admin_jms_translation.git.manager:
-        class: %fidesio_sonata_admin_jms_translation.git.manager.class%
-        arguments:
-            - @security.context
