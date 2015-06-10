@@ -19,7 +19,7 @@
         "jms/di-extra-bundle": "~1.4",
         "sonata-project/admin-bundle": "~2.3",
         "sensio/framework-extra-bundle": "~3.0",
-        "alchemy/zippy": "~0.2'"
+        "alchemy/zippy": "0.2.*'"
     },
     "conflict": {
         "twig/twig": "1.10.2"
